@@ -6,6 +6,11 @@ const Home = ({ navigation }) => {
     const Contactos = () => {
         navigation.navigate('Contactos')
     }
+
+    const QR = () => {
+      navigation.navigate('QR')
+  }
+
   return (
     <View style={All.container}>
       <Text style={All.title}>¡Bienvenido a Mi Aplicación!</Text>
@@ -13,7 +18,7 @@ const Home = ({ navigation }) => {
         <Text style={All.buttonText} onPress={Contactos}> Contactos </Text>
       </TouchableOpacity>
       <TouchableOpacity style={All.button}>
-        <Text style={All.buttonText}>Botón 2</Text>
+        <Text style={All.buttonText} onPress={QR}>QR</Text>
       </TouchableOpacity>
     </View>
   );
