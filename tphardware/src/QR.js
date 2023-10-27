@@ -1,16 +1,23 @@
 import React, { Component, Fragment } from 'react';
-import { TouchableOpacity, Text, Linking, View, Image, ImageBackground, BackHandler } from 'react-native';
-import QRCodeScanner from 'react-native-qrcode-scanner';
-
+import { View, SafeAreaView } from 'react-native';
+import QRCode from 'react-native-qrcode-svg';
 
 const QR = ({ navigation }) => {
-    
+
+
     return (
-        <View >
-            <QRCode
-                value= "This is the value in the QRcode"
+        <SafeAreaView>
+            <View>
+                <QRCode
+                size={350}
+                value={"Nadine Lewit y Juliana Pansowy"}
+                // logo={{uri: QRLogoImage}}
+                logoSize={60}
+                logoBackgroundColor='transparent'
+                // getRef={ref}
             />
         </View>
+      </SafeAreaView>
     );
     
 }
