@@ -5,7 +5,7 @@ import Contactos from './src/Contactos';
 import QR from './src/QR';
 import Camara from './src/Camara';
 import HoraTemp from './src/HoraTemp';
-
+import LlamadoEmergencia from './src/LlamadoEmergencia'
 
 
 
@@ -20,6 +20,7 @@ function App() {
         <Stack.Screen name="QR" component={QR} />
         <Stack.Screen name="Camara" component={Camara} />
         <Stack.Screen name="HoraTemp" component={HoraTemp} />
+        <Stack.Screen name="LlamadoEmergencia" component={LlamadoEmergencia} />
       </Stack.Navigator>
     </NavigationContainer>
   );

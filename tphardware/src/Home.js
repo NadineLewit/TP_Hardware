@@ -17,10 +17,13 @@ const Home = ({ navigation }) => {
   const HoraTemp = () => {
     navigation.navigate('HoraTemp')
   }
+  const LlamadoEmergencia = () => {
+    navigation.navigate('LlamadoEmergencia')
+  }
 
   return (
     <View style={All.container}>
-      <Text style={All.title}>¡Bienvenido a Mi Aplicación!</Text>
+      <Text style={All.title}></Text>
       <TouchableOpacity style={All.button}>
         <Text style={All.buttonText} onPress={Contactos}> Contactos </Text>
       </TouchableOpacity>
@@ -32,6 +35,9 @@ const Home = ({ navigation }) => {
       </TouchableOpacity>
       <TouchableOpacity style={All.button}>
         <Text style={All.buttonText} onPress={HoraTemp}>HoraTemp</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={All.button}>
+        <Text style={All.buttonText} onPress={LlamadoEmergencia}>Llamado Emergencia</Text>
       </TouchableOpacity>
     </View>
   );

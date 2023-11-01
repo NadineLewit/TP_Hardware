@@ -4,9 +4,10 @@ import { StyleSheet, StatusBar } from 'react-native';
 export const All = StyleSheet.create({
     container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'left',
+    alignItems: 'left',
     backgroundColor: '#f0f0f0',
+    fontSize: '12px'
   },
   title: {
     fontSize: 24,

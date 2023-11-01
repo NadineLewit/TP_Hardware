@@ -8,6 +8,7 @@ const HoraTemp = ({ navigation }) => {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
     const [temp, setTemp] = useState(null);
+    const [fechaHoraa, setFechaHoraa] = useState(null);
 
 
     useEffect(() => {
@@ -21,19 +22,32 @@ const HoraTemp = ({ navigation }) => {
 
          let location = await Location.getCurrentPositionAsync({});
         try {
+            
             const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${location.coords.latitude}&lon=${location.coords.longitude}&APPID=0cd4c845628a93ee3dd46acea3646046&units=metric`)
-            var prod = response;
-                setTemp(prod) 
-                console.log(temp + "BIEN")    
+            const hoy = new Date();
+            const month = hoy.getMonth()+1;
+            const year = hoy.getFullYear();
+            const date = hoy. getDate();
+            const fechaa = month + "/" + date + "/" + year;
+            const fechaHoraa = new Date();
+
+            var temperatura = response.data.main.temp;
+            var locacion = response.data.name;
+
+            console.log(response.data)
+                setTemp(temperatura)
+                setLocation(locacion);
+                setFechaHoraa(fechaHoraa.toLocaleString())
+                // console.log(temp + "BIEN")    
 
             }
             catch(error) {
                 console.log(error)
-                console.log(temp + "MAL")    
+                // console.log(temp + "MAL")    
 
                 console.log('Error fetching weather data');
             }
-        setLocation(location);
+        
     })();
     }, []);
 
@@ -42,13 +56,14 @@ const HoraTemp = ({ navigation }) => {
         text = errorMsg;
     } else if (location) {
         text = JSON.stringify(location);
-        console.log(location)
+        // console.log(location)
     }
 
   return (
     <View>
-      <Text>{text}</Text>
-      <Text>{temp}</Text>
+      <Text> Temperatura actual: {temp}</Text>
+      <Text> Barrio: {location}</Text>
+      <Text> Fecha y hora: {fechaHoraa}</Text>
     </View>
   );
 };
