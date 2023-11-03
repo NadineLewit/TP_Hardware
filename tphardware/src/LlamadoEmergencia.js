@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
+import * as SMS from 'expo-sms';
+import {All} from "./styles.js"
 
-export default function App() {
+const LlamadoEmergencia = () => {
     const [data, setData] = useState({});
+    const [num, setNum] = useState(50276669);
+
 
   const _subscribe = () => {
     this._subscription = Accelerometer.addListener(accelerometerData => {
@@ -18,31 +22,42 @@ export default function App() {
   useEffect(() => {
     _subscribe();
     (async () => {
-        
         let { status } = await Accelerometer.requestPermissionsAsync();
-        if (status !== 'granted') {
-        setErrorMsg('Permission to access sensor was denied, open settings');
+        const isAvailable = await SMS.isAvailableAsync();
+        if (status !== 'granted' && !isAvailable) {
+        setErrorMsg('Permisos para acceder fueron rechazados, abrir configuracion');
         return;
         }
+        else{
+          if (data.y > 0.7 || data.y < -0.7) {
+            const result = await SMS.sendSMSAsync([num], 'Necesito ayuda');
+          }
+      }
     })();
-    console.log(data)
-    if(y > 0.7 || y > -0.7){
-        console.log("moviste el celuuu") // FUNNCIONA, HARDCORDEAR EL NUMERO DE TELEFONO RANDOM
-    }
-    }, []);
+   
+    }, [num]);
 
     useEffect(() => {
-        console.log(data)
-        }, [data]);
-  
+      (async () => {
+        if (data.y > 0.8 || data.y < -0.8) {
+          const result  = await SMS.sendSMSAsync([num], 'Ayuda, esto en emergencias');
+         console.log("se movio")
+        }
+    })();
+    }, [data]);
 
 
-  return (
-    <View >
-      <Text >x: {x}</Text>
-      <Text>y: {y}</Text>
-      <Text >z: {z}</Text>
+        return (
+          <View style={All.contactosContainer}>
+          <Text style={All.textoLlamado}>Mueva el celular para mandar un mensaje de emergencia al numero deseado</Text>
+          <TextInput
+            style={All.input}
+            placeholder="Ingrese un número"
+            onChangeText={(text) => setNum(text)}
+          />
+          <Text style={All.mansajeLlamado}>Si no escribe ningun numero, el mensaje sera mandado a un numero random.</Text>
+          </View>
+        );
 
-    </View>
-  );
 }
+export default LlamadoEmergencia;

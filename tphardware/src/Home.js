@@ -7,12 +7,8 @@ const Home = ({ navigation }) => {
         navigation.navigate('Contactos')
     }
 
-    const QR = () => {
-      navigation.navigate('QR')
-  }
-
-  const Camara = () => {
-    navigation.navigate('Camara')
+  const CamaraQR = () => {
+    navigation.navigate('CamaraQR')
   }
   const HoraTemp = () => {
     navigation.navigate('HoraTemp')
@@ -23,15 +19,13 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={All.container}>
-      <Text style={All.title}></Text>
+      <Text style={All.title}> Elija una función: </Text>
+      <View>
       <TouchableOpacity style={All.button}>
         <Text style={All.buttonText} onPress={Contactos}> Contactos </Text>
       </TouchableOpacity>
       <TouchableOpacity style={All.button}>
-        <Text style={All.buttonText} onPress={QR}>QR</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={All.button}>
-        <Text style={All.buttonText} onPress={Camara}>Camara</Text>
+        <Text style={All.buttonText} onPress={CamaraQR}>Camara y QR</Text>
       </TouchableOpacity>
       <TouchableOpacity style={All.button}>
         <Text style={All.buttonText} onPress={HoraTemp}>HoraTemp</Text>
@@ -39,6 +33,7 @@ const Home = ({ navigation }) => {
       <TouchableOpacity style={All.button}>
         <Text style={All.buttonText} onPress={LlamadoEmergencia}>Llamado Emergencia</Text>
       </TouchableOpacity>
+      </View>
     </View>
   );
 };

@@ -2,8 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/Home';
 import Contactos from './src/Contactos';
-import QR from './src/QR';
-import Camara from './src/Camara';
+import CamaraQR from './src/CamaraQR';
 import HoraTemp from './src/HoraTemp';
 import LlamadoEmergencia from './src/LlamadoEmergencia'
 
@@ -17,8 +16,7 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Contactos" component={Contactos} />
-        <Stack.Screen name="QR" component={QR} />
-        <Stack.Screen name="Camara" component={Camara} />
+        <Stack.Screen name="CamaraQR" component={CamaraQR} />
         <Stack.Screen name="HoraTemp" component={HoraTemp} />
         <Stack.Screen name="LlamadoEmergencia" component={LlamadoEmergencia} />
       </Stack.Navigator>

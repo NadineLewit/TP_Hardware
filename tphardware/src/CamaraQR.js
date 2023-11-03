@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, SafeAreaView } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import QRCode from 'react-native-qrcode-svg';
+import {All} from "./styles.js"
 
-const Camara = ({  }) => {
-    const [hasPermission, setHasPermission] = useState(null);
+
+const CamaraQR = ({ navigation }) => {
+  const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
   useEffect(() => {
@@ -29,6 +32,18 @@ const Camara = ({  }) => {
 
   return (
     <View style={{ flex: 1 }}>
+      <SafeAreaView>
+            <View style={All.QRCentro}>
+                <QRCode
+                size={300}
+                value={"Nadine Lewit y Juliana Pansowy"}
+                // logo={{uri: QRLogoImage}}
+                logoSize={60}
+                logoBackgroundColor='transparent'
+                // getRef={ref}
+            />
+        </View>
+      </SafeAreaView>
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={{ flex: 1 }}
@@ -43,4 +58,4 @@ const Camara = ({  }) => {
   );
 }
 
-export default Camara;
+export default CamaraQR;
