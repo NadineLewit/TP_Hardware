@@ -36,7 +36,7 @@ const Contactos = () => {
       }, []);
   return (
     <View style={All.contactosContainer}>
-      <Text style={All.title}>Tus contactos:</Text>
+      <Text style={All.TusContactosTexto}>Tus contactos:</Text>
       <FlatList
       
           data={contactos}

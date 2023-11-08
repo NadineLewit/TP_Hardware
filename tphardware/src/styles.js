@@ -59,7 +59,18 @@ export const All = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     marginTop: 30,
-    marginRight: 70
+    marginRight: 70,
+    marginLeft: -53,
+  },
+  TusContactosTexto: {
+    color: 'black',
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    marginTop: 20,
+  },
+  BarrioLogo: {
+    marginLeft: -4,
   },
   Barrio: {
     color: 'black',
@@ -68,7 +79,8 @@ export const All = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     marginTop: 30,
-    marginRight: 160
+    marginRight: 160,
+    marginLeft: -42
   },
   Fecha: {
     color: 'black',
@@ -77,7 +89,8 @@ export const All = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     marginTop: 30,
-    marginRight: 9
+    marginRight: -4,
+    marginLeft: -27
   },
   input: {
     marginLeft: '22%',

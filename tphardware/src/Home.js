@@ -28,7 +28,7 @@ const Home = ({ navigation }) => {
         <Text style={All.buttonText} onPress={CamaraQR}>Camara y QR</Text>
       </TouchableOpacity>
       <TouchableOpacity style={All.button}>
-        <Text style={All.buttonText} onPress={HoraTemp}>HoraTemp</Text>
+        <Text style={All.buttonText} onPress={HoraTemp}>Hora y Temperatura </Text>
       </TouchableOpacity>
       <TouchableOpacity style={All.button}>
         <Text style={All.buttonText} onPress={LlamadoEmergencia}>Llamado Emergencia</Text>

@@ -1,17 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import * as Location from 'expo-location';
 import axios from 'axios';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import {All} from "./styles.js"
 import { Avatar, Card, IconButton } from 'react-native-paper';
-import { Ionicons, Fontisto } from '@expo/vector-icons'; 
+import { Ionicons, Fontisto } from '@expo/vector-icons';
+
 
 const HoraTemp = ({ navigation }) => {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
     const [temp, setTemp] = useState(null);
     const [fechaHoraa, setFechaHoraa] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
 
     useEffect(() => {
@@ -19,6 +21,7 @@ const HoraTemp = ({ navigation }) => {
         
         let { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
+            setIsLoading(true)
         setErrorMsg('Permission to access location was denied');
         return;
         }
@@ -41,12 +44,15 @@ const HoraTemp = ({ navigation }) => {
                 setTemp(temperatura)
                 setLocation(locacion);
                 setFechaHoraa(fechaHoraa.toLocaleString())
+                setIsLoading(false)
+
                 // console.log(temp + "BIEN")    
 
             }
             catch(error) {
                 console.log(error)
                 // console.log(temp + "MAL")    
+                setIsLoading(true)
 
                 console.log('Error fetching weather data');
             }
@@ -65,6 +71,8 @@ const HoraTemp = ({ navigation }) => {
   return (
     //CARGANDOOOOO HACERRR MALUMA
     <View>
+        {!isLoading ? (
+        <>
         <Card.Title
             title={<Text style={All.TemperaturaTexto}> Temperatura actual: {temp}</Text>}
             left={(props) =><FontAwesome5 name="temperature-high" size={24} color="black" />}
@@ -72,15 +80,20 @@ const HoraTemp = ({ navigation }) => {
 
       <Card.Title
             title={<Text style={All.Barrio}> Barrio: {location}</Text>}
-            left={(props) =><Ionicons name="location" size={24} color="black" />}
+            left={(props) =><Ionicons style={All.BarrioLogo} name="location" size={24} color="black" />}
           />
 
       <Card.Title
             title={<Text style={All.Fecha}> Fecha y hora: {fechaHoraa}</Text>}
-            left={(props) =><Fontisto name="date" size={24} color="black" />}
+            left={(props) =><Fontisto style={All.BarrioLogo} name="date" size={24} color="black" />}
           />
-      
-      
+          </>
+          ) : (
+<ActivityIndicator></ActivityIndicator>
+
+
+          )
+        }
     </View>
   );
 };
