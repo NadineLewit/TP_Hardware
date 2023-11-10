@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
+import { Text, View, TextInput } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 import * as SMS from 'expo-sms';
 import {All} from "./styles.js"
@@ -17,8 +17,6 @@ const LlamadoEmergencia = () => {
 
   let { x, y, z } = data;
 
-  
-
   useEffect(() => {
     _subscribe();
     (async () => {
@@ -30,21 +28,12 @@ const LlamadoEmergencia = () => {
         }
         else{
           if (data.y > 0.7 || data.y < -0.7) {
-            const result = await SMS.sendSMSAsync([num], 'Necesito ayuda');
+          const result  = await SMS.sendSMSAsync([num], 'Ayuda, estoy en emergencias');
           }
       }
     })();
    
-    }, [num]);
-
-    useEffect(() => {
-      (async () => {
-        if (data.y > 0.8 || data.y < -0.8) {
-          const result  = await SMS.sendSMSAsync([num], 'Ayuda, esto en emergencias');
-         console.log("se movio")
-        }
-    })();
-    }, [data]);
+    }, [num, data]);
 
 
         return (

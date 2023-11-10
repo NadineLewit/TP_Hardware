@@ -1,6 +1,6 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import {All} from "./styles.js"
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const Home = ({ navigation }) => {
     const Contactos = () => {

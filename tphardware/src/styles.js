@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 
 export const All = StyleSheet.create({
@@ -9,6 +9,12 @@ export const All = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     fontSize: '12px',
     marginTop: 170,
+  },
+  carg: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '85%',
   },
   title: {
     fontSize: 24,
@@ -99,7 +105,7 @@ export const All = StyleSheet.create({
   },
   mansajeLlamado: {
     textAlign: 'center',
-    marginLeft: '19%',
+    marginLeft: '20%',
 
     marginTop: 20,
     fontSize: 10,
